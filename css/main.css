@@ -1,5 +1,21 @@
+:root {
+    --yellow:   #ffc600;
+    --black:    #373737;
+    --royal:    royalblue;
+    --red:      orangered;
+}
+
+
+
 html {
     box-sizing: border-box;
+}
+
+body {
+    font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    height: 100vh;
+    margin: 0;
 }
 
 *,
@@ -13,10 +29,62 @@ html {
     display: grid;
     grid-template-areas: 
         "header header header"
-        "nav content side"
+        "nav content bambala"
         "footer footer footer";
     grid-template-columns: 200px 1fr 200px;
     grid-template-rows: auto 1fr auto;
     grid-gap: 10px;
     height: 100vh;
+}
+
+header {
+    color: #fff;
+    padding: 10px;
+    grid-area: header;
+    background: var(--red);
+}
+
+nav {
+    grid-area: nav;
+    /* margin-left: 0.5rem; */
+    background: var(--yellow);
+}
+
+main {
+    grid-area: content;
+}
+
+aside {
+    grid-area: bambala;
+    /* margin-right: 0.5rem; */
+    background: var(--yellow);
+}
+
+footer {
+    color: #fff;
+    grid-area: footer;
+    padding: 0.15em 10px;
+    background: var(--royal);
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-areas:
+            "header"
+            "nav"
+            "content"
+            "bambala"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows:
+            auto /* header */
+            minmax(75px, auto) /* nav */
+            1fr /* content */
+            minmax(75px, auto) /* bambala */
+            auto; /* footer */
+    }
+
+    nav, aside {
+        margin: 0;
+    }
 }
